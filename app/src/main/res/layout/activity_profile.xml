@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+         >
+
+
+
+        <TextView
+            android:id="@+id/pro_nickname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="暱稱"
+            android:textSize="16dp"/>
+
+        <EditText
+            android:id="@+id/pro_nickname_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/pro_realname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="真實姓名"
+            android:textSize="16dp"/>
+
+        <EditText
+            android:id="@+id/pro_realname_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/pro_birthday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="生日"
+            android:textSize="16dp"/>
+
+        <EditText
+            android:id="@+id/pro_birthday_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="none"
+            android:layout_weight="1"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/pro_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="電話"
+            android:textSize="16dp" />
+
+        <EditText
+            android:id="@+id/pro_phone_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="phone"
+            android:layout_weight="1"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/pro_sex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="性別"
+            android:textSize="16dp"/>
+
+
+
+
+        <Spinner
+            android:id="@+id/pro_sex_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/spn_sex"
+            android:spinnerMode="dialog"
+        android:prompt="@string/select_region_dialog_title" />
+
+
+        <Button
+        android:id="@+id/pro_send"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="修改"
+            android:onClick="change"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity">
+
+
+    <TextView
+        android:id="@+id/reg_mail"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="Email"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/regedit_mail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="請使用gmail作為註冊信箱"
+        android:inputType="textEmailAddress"
+        app:layout_constraintStart_toStartOf="@+id/reg_mail"
+        app:layout_constraintTop_toBottomOf="@+id/reg_mail" />
+
+    <TextView
+        android:id="@+id/reg_pawd"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="112dp"
+        android:text="輸入密碼"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/regedit_pawd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="密碼須中英混雜且在六位以上"
+        app:layout_constraintStart_toStartOf="@+id/reg_pawd"
+        app:layout_constraintTop_toBottomOf="@+id/reg_pawd" />
+
+    <TextView
+        android:id="@+id/reg_pawd_ver"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="208dp"
+        android:text="再輸入一次密碼"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/regedit_pawd_ver"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="請輸入跟剛剛一樣的密碼"
+        app:layout_constraintStart_toStartOf="@+id/reg_pawd_ver"
+        app:layout_constraintTop_toBottomOf="@+id/reg_pawd_ver" />
+
+    <Button
+        android:id="@+id/reg_send"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="送出"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:onClick="onclickreg"/>
+
+</android.support.constraint.ConstraintLayout>

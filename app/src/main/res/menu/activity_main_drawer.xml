@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:showIn="navigation_view"
+
+
+    >
+
+    <group android:checkableBehavior="single"
+
+        >
+        <item
+            android:id="@+id/favorite"
+
+            android:title="我的最愛" />
+        <item
+            android:id="@+id/message"
+
+            android:title="我的訊息" />
+        <item
+            android:id="@+id/subscription"
+
+            android:title="我的訂閱" />
+        <item
+            android:id="@+id/record"
+
+            android:title="活動紀錄" />
+        <item
+            android:id="@+id/set"
+
+            android:title="設定" />
+        <item
+            android:id="@+id/feedback"
+
+            android:title="意見回饋" />
+        <item
+            android:id="@+id/member"
+
+            android:title="會員專區" />
+        <item
+            android:id="@+id/play"
+
+            android:title="遊玩" />
+        <item
+            android:id="@+id/create"
+
+            android:title="創造" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/about"
+                android:icon="@drawable/ic_menu_share"
+                android:title="關於" />
+            <item
+                android:id="@+id/exit"
+                android:icon="@drawable/ic_menu_send"
+                android:title="退出" />
+        </menu>
+    </item>
+
+</menu>
