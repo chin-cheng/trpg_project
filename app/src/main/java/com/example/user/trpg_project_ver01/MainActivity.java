@@ -30,15 +30,14 @@ public class MainActivity extends AppCompatActivity
     /*
      * 歡迎畫面_WelcomeActivity.java
      * 主介面(選擇遊玩或創建)_MainActivity.java
-     * 登入介面
-     * 註冊介面
+     * 登入介面_LoginActivity.java
+     * 註冊介面_RegisterActivity.java
      * 會員專區_MemberActivity.java
-     *
-     * 選擇遊玩介面
-     * 遊玩
+     * 創建遊戲頁面_CreateGameActivity.java
+     * 遊玩介面_PlayActivity.java
+     * 個人資料頁面_ProfileActivity.java
      * by CHANG,CHIN-CHENG
      * */
-    // Write a message to the database
 
     Button testbtn;
     TextView username;

@@ -47,11 +47,6 @@ public class PlayActivity extends AppCompatActivity {
                 // whenever data at this location is updated.
                 Poststory value = dataSnapshot.getValue(Poststory.class);
 
-                while(endcount<1){
-
-
-
-                }
 
                 Log.d("TAG", "Value is: " + value.plot1_1);
             }
