@@ -85,6 +85,7 @@ regedit_pawd_ver=findViewById(R.id.regedit_pawd_ver);
                                             userUID=FirebaseAuth.getInstance().getCurrentUser().getUid();//或許未來登出再登入會有問題
                                             usersRef.child(userUID).child("email").setValue(email);
                                             usersRef.child(userUID).child("password").setValue(password);
+                                            usersRef.child(userUID).child("useruid").setValue(userUID);
 Log.d("uidd",userUID);
                                                 finish();
                                                 // User cancelled the dialog
