@@ -15,6 +15,7 @@ TextView welcome;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+        getSupportActionBar().hide(); //隱藏標題
         mHandler.sendEmptyMessageDelayed(GOTO_MAIN_ACTIVITY, 500); //跳轉
 //welcome=findViewById(R.id.welcome);
 //welcome.setTextSize(30);
