@@ -80,7 +80,7 @@ public class PlayActivity extends AppCompatActivity {
                     Log.w("AG", "Failed to read value.", error.toException());
                 }
             });
-
+            Log.w("AG", "readplot-ch"+chapter+"br"+branch);
         }
 
         public void readposition(DatabaseReference option){
@@ -90,10 +90,11 @@ public class PlayActivity extends AppCompatActivity {
                 public void onDataChange(DataSnapshot snapshot) {
                     Postoption value = snapshot.getValue(Postoption.class);
                     //if(endcheck!=1) {
-
+                    Toast.makeText(PlayActivity.this, "yo", Toast.LENGTH_LONG).show();
                         chapter=value.arrive_chapter;
                         branch=value.arrive_branch;
-                    Log.w("AG", "ch"+chapter+"br"+branch);//問題在這裡
+                    Log.w("AG", "readposition inside ch"+chapter+"br"+branch);
+                    //問題在這裡
                    // Toast.makeText(PlayActivity.this, "x"+chapter+"x"+value.arrive_chapter, Toast.LENGTH_LONG).show();
                     //}
                 }
@@ -104,7 +105,7 @@ public class PlayActivity extends AppCompatActivity {
                     Log.w("AG", "Failed to read value.", error.toException());
                 }
             });
-
+            Log.w("AG", "readposition ch"+chapter+"br"+branch);
 
 
         }
@@ -113,6 +114,7 @@ public class PlayActivity extends AppCompatActivity {
         plot=FirebaseDatabase.getInstance().getReference("story/storyname/content/chapter/" + chapter + "/branch/" + branch);
         option1 = FirebaseDatabase.getInstance().getReference("story/storyname/content/chapter/" + chapter + "/branch/" + branch+"/option/1");
         option2 = FirebaseDatabase.getInstance().getReference("story/storyname/content/chapter/" + chapter + "/branch/" + branch+"/option/2");
+        Log.w("AG", "appointpostition-ch"+chapter+"br"+branch);
     }
 
 
@@ -154,7 +156,7 @@ public class PlayActivity extends AppCompatActivity {
                 Log.w("AG", "Failed to read value.", error.toException());
             }
         });
-
+        Log.w("AG", "readoptiontext-ch"+chapter+"br"+branch);
     }
 //--------------------------
     public void test(View v){
@@ -178,7 +180,7 @@ public void run(View v) /*throws InterruptedException*/ {
 
                     readposition(option1);
             //sleep(500);
-
+            Log.w("AG", "RUN-ch"+chapter+"br"+branch);
             appointpostition();//問題在這裡
             readendcheck(plot);
             if (endcheck == 999) {//就是endcheck
@@ -195,10 +197,11 @@ public void run(View v) /*throws InterruptedException*/ {
         case R.id.choice2:
 
                     readposition(option2);
+                    Log.w("AG", "RUN-ch"+chapter+"br"+branch);
             //sleep(500);
             appointpostition();
             readendcheck(plot);
-            Log.w("AG", "ch2"+chapter+"br"+branch);
+
             if (endcheck == 999) {//就是endcheck
                 readplot(plot);
             } else if(branch==0&&chapter==0){
