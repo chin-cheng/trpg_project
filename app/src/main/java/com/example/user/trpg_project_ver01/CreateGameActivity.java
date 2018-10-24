@@ -6,6 +6,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -19,19 +20,22 @@ public class CreateGameActivity extends AppCompatActivity {
     private String userUID;
     EditText create_storyname;
     EditText create_author;
+    String author="",style="",title="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_game);
          userUID= FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference userdata = FirebaseDatabase.getInstance().getReference("users/"+userUID+"");
         create_storyname=findViewById(R.id.create_storyname_edit);
         create_author=findViewById(R.id.create_author_edit);
-
+        Toast.makeText(CreateGameActivity.this, userUID, Toast.LENGTH_LONG).show();
     }
     public void nextpage(View v){
 
-        myRef.child(create_storyname.getText().toString()).child("author").setValue(create_author.getText().toString());
+
+        myRef.child(create_storyname.getText().toString()).child("author").setValue(create_author.getText().toString());//寫入作者
         new AlertDialog.Builder(this)
                 .setTitle("對話視窗")
                 .setIcon(R.mipmap.ic_launcher)

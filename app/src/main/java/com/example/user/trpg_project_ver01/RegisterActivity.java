@@ -17,6 +17,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 
 public class RegisterActivity extends AppCompatActivity {
     FirebaseAuth auth;
@@ -86,6 +87,13 @@ regedit_pawd_ver=findViewById(R.id.regedit_pawd_ver);
                                             usersRef.child(userUID).child("email").setValue(email);
                                             usersRef.child(userUID).child("password").setValue(password);
                                             usersRef.child(userUID).child("useruid").setValue(userUID);
+                                            usersRef.child(userUID).child("reg_time").setValue(ServerValue.TIMESTAMP);
+                                            usersRef.child(userUID).child("nickname").setValue("");
+                                            usersRef.child(userUID).child("realname").setValue("");
+                                            usersRef.child(userUID).child("birthday").setValue("");
+                                            usersRef.child(userUID).child("phone").setValue("");
+                                            usersRef.child(userUID).child("sex").setValue("");
+
 Log.d("uidd",userUID);
                                                 finish();
                                                 // User cancelled the dialog

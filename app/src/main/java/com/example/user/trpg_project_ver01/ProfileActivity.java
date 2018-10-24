@@ -15,6 +15,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.example.user.trpg_project_ver01.post.Post;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -48,6 +49,9 @@ Spinner pro_sex_spinner;
         pro_birthday_edit = (EditText)findViewById(R.id.pro_birthday_edit);
         pro_realname_edit=findViewById(R.id.pro_realname_edit);
         pro_sex_spinner=findViewById(R.id.pro_sex_spinner);
+
+
+
         pro_birthday_edit.setInputType(InputType.TYPE_NULL); //不显示系统输入键盘
 //生日菜單
         pro_birthday_edit.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -103,6 +107,19 @@ Spinner pro_sex_spinner;
                 pro_realname_edit.setText(value.realname);
                 pro_birthday_edit.setText(value.birthday);
                 pro_phone_edit.setText(value.phone);
+                switch (value.sex){
+                    case "男":
+                        pro_sex_spinner.setSelection(0);
+                        break;
+                    case "女":
+                        pro_sex_spinner.setSelection(1);
+                        break;
+                    case "其他":
+                        pro_sex_spinner.setSelection(2);
+                        break;
+
+                }
+
                 //pro_sex_spinner.set
                 Log.d("TAG", "Value is: " + value.email);
             }
@@ -112,21 +129,6 @@ Spinner pro_sex_spinner;
                 Log.w("AG", "Failed to read value.", error.toException());
             }
         });
-
-
-
-    }//oncrate結束
-
-
-    public void change(View v){
-
-        FirebaseDatabase db = FirebaseDatabase.getInstance();
-        DatabaseReference usersRef = db.getReference("users");
-        //usersRef.child(userUID).child(email);
-
-        //性別選單
-
-
 
         pro_sex_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
@@ -141,7 +143,8 @@ Spinner pro_sex_spinner;
                 //Toast.makeText(ProfileActivity.this, "你選的是"+position , Toast.LENGTH_SHORT).show();
                 /// sex=lunchList.getItem(position).toString();
                 sex=parent.getSelectedItem().toString();
-                Log.d("test",parent.getSelectedItem().toString());
+
+                Log.d("sex",parent.getSelectedItem().toString());
             }
 
             @Override
@@ -149,6 +152,41 @@ Spinner pro_sex_spinner;
 
             }
         });
+
+    }//oncreate結束
+
+
+    public void change(View v){
+
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        DatabaseReference usersRef = db.getReference("users");
+        //usersRef.child(userUID).child(email);
+
+        //性別選單
+
+
+
+//        pro_sex_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//
+//
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//
+//                ArrayAdapter<CharSequence> lunchList = ArrayAdapter.createFromResource(ProfileActivity.this,
+//                        R.array.spn_sex,
+//                        android.R.layout.simple_spinner_dropdown_item);
+//                //pro_sex_spinner.setAdapter(lunchList);
+//                //Toast.makeText(ProfileActivity.this, "你選的是"+position , Toast.LENGTH_SHORT).show();
+//                /// sex=lunchList.getItem(position).toString();
+//                sex=parent.getSelectedItem().toString();
+//                Log.d("sex",parent.getSelectedItem().toString());
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
 
 
 
