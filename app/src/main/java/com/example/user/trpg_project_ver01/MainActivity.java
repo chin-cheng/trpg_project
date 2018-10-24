@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,17 +37,19 @@ public class MainActivity extends AppCompatActivity
      * 創建遊戲頁面_CreateGameActivity.java
      * 遊玩介面_PlayActivity.java
      * 個人資料頁面_ProfileActivity.java
+     * 遊玩前選擇畫面_ChooseplayActivity
+     * 創造前選擇畫面_ChoosecreateActivity
      * by CHANG,CHIN-CHENG
      * */
 
-    Button testbtn;
-    TextView username;
+    Button cc,py;
     FirebaseUser user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Button cc = (Button)findViewById(R.id.button);
+        Button py = (Button)findViewById(R.id.button2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 //寫入測試
@@ -76,7 +79,6 @@ public class MainActivity extends AppCompatActivity
         //-----
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        username=(TextView) findViewById(R.id.na);
        // username.setText(user.getUid());
 
 
@@ -121,7 +123,16 @@ public class MainActivity extends AppCompatActivity
 //崩潰測試結束
 */
     }
-
+    public void cc(View v){
+        Intent intent = new Intent();
+        intent.setClass(this,ChoosecreateActivity.class);
+        startActivity(intent);
+    }
+    public void py(View v){
+        Intent intent = new Intent();
+        intent.setClass(this,ChooseplayActivity.class);
+        startActivity(intent);
+    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

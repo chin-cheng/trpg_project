@@ -33,7 +33,9 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".PlayActivity" />
-        <activity android:name=".CreateGameActivity"></activity>
+        <activity android:name=".CreateGameActivity" />
+        <activity android:name=".ChooseplayActivity" />
+        <activity android:name=".ChoosecreateActivity"></activity>
     </application>
 
 </manifest>
