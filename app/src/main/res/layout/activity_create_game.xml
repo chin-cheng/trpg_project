@@ -32,14 +32,30 @@
             android:text="" />
 
         <TextView
-            android:id="@+id/create_author"
+            android:id="@+id/create_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="作者"
+            android:text="風格"
             android:textSize="16dp" />
 
         <EditText
-            android:id="@+id/create_author_edit"
+            android:id="@+id/create_style_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="" />
+
+
+        <TextView
+            android:id="@+id/create_storyintro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="簡介"
+            android:textSize="16dp" />
+
+        <EditText
+            android:id="@+id/create_storyintro_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"

@@ -15,7 +15,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.example.user.trpg_project_ver01.post.Post;
+import com.example.user.trpg_project_ver01.models.Post;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -107,7 +107,8 @@ Spinner pro_sex_spinner;
                 pro_realname_edit.setText(value.realname);
                 pro_birthday_edit.setText(value.birthday);
                 pro_phone_edit.setText(value.phone);
-                switch (value.sex){
+                if(value.sex!=null){
+                switch (value.sex) {
                     case "男":
                         pro_sex_spinner.setSelection(0);
                         break;
@@ -118,6 +119,11 @@ Spinner pro_sex_spinner;
                         pro_sex_spinner.setSelection(2);
                         break;
 
+                    default:
+
+                        break;
+
+                }
                 }
 
                 //pro_sex_spinner.set

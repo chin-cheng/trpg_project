@@ -31,6 +31,10 @@
     <string name="method">Login Method</string>
     <string name="Choose">Choose Method</string>
 
+    <string name="heading_recent">Recent</string>
+    <string name="heading_my_posts">My Posts</string>
+    <string name="heading_my_top_posts">My Top Posts</string>
+
 
     <string name="about">TRPG非常重視會員的隱私權且遵循「個人資料保護法」之規定，因此制訂了隱私權保護政策，您可參考下列隱私權保護政策的內容。
 

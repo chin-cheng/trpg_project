@@ -25,7 +25,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="請使用gmail作為註冊信箱"
+        android:hint="請輸入email"
         android:inputType="textEmailAddress"
         app:layout_constraintStart_toStartOf="@+id/reg_mail"
         app:layout_constraintTop_toBottomOf="@+id/reg_mail" />

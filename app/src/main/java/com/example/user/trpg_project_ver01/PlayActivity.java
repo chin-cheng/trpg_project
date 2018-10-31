@@ -1,15 +1,14 @@
 package com.example.user.trpg_project_ver01;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.user.trpg_project_ver01.post.Postoption;
-import com.example.user.trpg_project_ver01.post.Poststory;
+import com.example.user.trpg_project_ver01.models.Postoption;
+import com.example.user.trpg_project_ver01.models.Poststory;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -20,7 +19,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class PlayActivity extends AppCompatActivity {
+import static java.lang.Thread.sleep;
+
+public class PlayActivity extends BaseActivity {
     private String userUID;
     TextView test;
     Button choice1,choice2,start;
@@ -174,17 +175,20 @@ public class PlayActivity extends AppCompatActivity {
 
 }
 
-public void run(View v) /*throws InterruptedException*/ {
+public void run(View v)  /*throws InterruptedException*/ {
     appointpostition();
 
     switch (v.getId()) {
         case R.id.choice1:
-
+            Log.w("AG", "-------btnstart------");
+            showProgressDialog();//1027do
                     readposition(option1);
-            //sleep(500);
+            //sleep(2000);
             Log.w("AG", "RUN-ch"+chapter+"br"+branch);
+
             appointpostition();//問題在這裡
-            readendcheck(plot);
+            hideProgressDialog();
+            //readendcheck(plot);
             if (endcheck == 999) {//就是endcheck
                 readplot(plot);
             } else if((branch==0)&&(chapter==0)){
@@ -194,6 +198,7 @@ public void run(View v) /*throws InterruptedException*/ {
                 readoptiontext(option1, choice1);
                 readoptiontext(option2, choice2);
             }
+            Log.w("AG", "----------btnend---------");
             //Toast.makeText(PlayActivity.this, "1", Toast.LENGTH_LONG).show();
             break;
         case R.id.choice2:

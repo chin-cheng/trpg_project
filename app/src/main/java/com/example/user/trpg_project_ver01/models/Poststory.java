@@ -1,4 +1,4 @@
-package com.example.user.trpg_project_ver01.post;
+package com.example.user.trpg_project_ver01.models;
 
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
