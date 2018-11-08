@@ -22,7 +22,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class MemberActivity extends AppCompatActivity
+public class MemberActivity extends BaseActivity
 
 
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -151,40 +151,7 @@ public void logout(View v){
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item)  {
-        // Handle navigation view item clicks here.
 
-        int id = item.getItemId();
-
-        if (id == R.id.member) {
-            // Handle the camera action
-            Toast toast = Toast.makeText(MemberActivity.this,
-                    "Hell!", Toast.LENGTH_LONG);
-            //顯示Toast
-            toast.show();
-            Intent intent = new Intent();
-            //將原本Activity的換成MainActivity
-            intent.setClass(MemberActivity.this, MemberActivity.class);
-            startActivity(intent);
-            finish();
-        } else if (id == R.id.play) {
-/*
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-*/
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
 
 
 }

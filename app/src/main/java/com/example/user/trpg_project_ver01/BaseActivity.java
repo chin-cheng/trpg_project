@@ -57,7 +57,7 @@ public class BaseActivity extends AppCompatActivity {
         } else if (id == R.id.play) {
             Intent intent = new Intent();
             //將原本Activity的換成MainActivity
-            intent.setClass(this, PlayActivity.class);
+            intent.setClass(this, PlayVer2Activity.class);
             startActivity(intent);
         }else if (id == R.id.exit) {
 

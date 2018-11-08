@@ -35,7 +35,8 @@
         <activity android:name=".PlayActivity" />
         <activity android:name=".CreateGameActivity" />
         <activity android:name=".AddBranchActivity" />
-        <activity android:name=".ChoiceChapterActivity"></activity>
+        <activity android:name=".ChoiceChapterActivity" />
+        <activity android:name=".PlayVer2Activity"></activity>
     </application>
 
 </manifest>

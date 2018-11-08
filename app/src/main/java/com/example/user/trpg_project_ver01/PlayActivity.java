@@ -67,27 +67,36 @@ public class PlayActivity extends BaseActivity {
         }
 //------------------------------
 
-        public void readplot(DatabaseReference plot){
-            plot.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot snapshot) {
-                    // This method is called once with the initial value and again
-                    // whenever data at this location is updated.
-                    Poststory value = snapshot.getValue(Poststory.class);
-                    test.append(value.plot);
-                    //endcheck=value.endcheck;
-                }
-                @Override
-                public void onCancelled(DatabaseError error) {
-                    // Failed to read value
-                    Log.w("AG", "Failed to read value.", error.toException());
-                }
-            });
-            Log.w("AG", "readplot-ch"+chapter+"br"+branch);
+        public void readplot(final DatabaseReference plot){
+
+
+
+                        plot.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot snapshot) {
+                                // This method is called once with the initial value and again
+                                // whenever data at this location is updated.
+                                Poststory value = snapshot.getValue(Poststory.class);
+                                test.append(value.plot);
+                                //endcheck=value.endcheck;
+                            }
+                            @Override
+                            public void onCancelled(DatabaseError error) {
+                                // Failed to read value
+                                Log.w("AG", "Failed to read value.", error.toException());
+                            }
+                        });
+                        Log.w("AG", "readplot-ch"+chapter+"br"+branch);
+
+
+
+
         }
 
-        public void readposition(DatabaseReference option){
-
+        public void readposition(final DatabaseReference option){
+        new Thread(new Runnable(){
+public void run(){
+        try {
             option.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot snapshot) {
@@ -108,8 +117,17 @@ public class PlayActivity extends BaseActivity {
                     Log.w("AG", "Failed to read value.", error.toException());
                 }
             });
-            Log.w("AG", "readposition ch"+chapter+"br"+branch);
 
+            Log.w("AG", "readposition ch"+chapter+"br"+branch);
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+    System.out.println("子线程执行！");
+
+
+}
+        }).start();
 
         }
 
@@ -171,35 +189,64 @@ public class PlayActivity extends BaseActivity {
         readoptiontext(option1,choice1);
     }
 
-    public void start(View v){
+    public void testbreak(){
+        Log.w("AG", "RUN-ch"+chapter+"br"+branch);
+        //sleep(500);
+        appointpostition();
+        readendcheck(plot);
 
+        if (endcheck == 999) {//就是endcheck
+            readplot(plot);
+        } else if(branch==0&&chapter==0){
+            Toast.makeText(PlayActivity.this, "error", Toast.LENGTH_LONG).show();
+        }else{
+            readplot(plot);
+            readoptiontext(option1, choice1);
+            readoptiontext(option2, choice2);
+        }
+        //Toast.makeText(PlayActivity.this, "2", Toast.LENGTH_LONG).show();
 }
 
 public void run(View v)  /*throws InterruptedException*/ {
-    appointpostition();
+    //appointpostition();
 
     switch (v.getId()) {
         case R.id.choice1:
             Log.w("AG", "-------btnstart------");
-            showProgressDialog();//1027do
-                    readposition(option1);
-            //sleep(2000);
             Log.w("AG", "RUN-ch"+chapter+"br"+branch);
+            //sleep(500);
 
-            appointpostition();//問題在這裡
-            hideProgressDialog();
+            Thread childrenThread=new Thread(new Runnable(){
+                public void run(){
+                    try {
+                        readposition(option1);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println("子线程执行！");
+
+                }
+            });
+            childrenThread.start();
+            appointpostition();
+
+
+
+
+
             //readendcheck(plot);
+
             if (endcheck == 999) {//就是endcheck
                 readplot(plot);
-            } else if((branch==0)&&(chapter==0)){
+            } else if(branch==0&&chapter==0){
                 Toast.makeText(PlayActivity.this, "error", Toast.LENGTH_LONG).show();
             }else{
                 readplot(plot);
                 readoptiontext(option1, choice1);
                 readoptiontext(option2, choice2);
             }
-            Log.w("AG", "----------btnend---------");
-            //Toast.makeText(PlayActivity.this, "1", Toast.LENGTH_LONG).show();
+            //Toast.makeText(PlayActivity.this, "2", Toast.LENGTH_LONG).show();
+
             break;
         case R.id.choice2:
 
@@ -225,6 +272,8 @@ public void run(View v)  /*throws InterruptedException*/ {
             Toast.makeText(PlayActivity.this, "x", Toast.LENGTH_LONG).show();
             break;
     }
+
+
 }
 }
 /*

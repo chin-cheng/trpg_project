@@ -175,7 +175,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.play) {
             Intent intent = new Intent();
             //將原本Activity的換成MainActivity
-            intent.setClass(MainActivity.this, PlayActivity.class);
+            intent.setClass(MainActivity.this, PlayVer2Activity.class);
             startActivity(intent);
         }else if (id == R.id.exit) {
 
