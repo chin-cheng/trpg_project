@@ -1,5 +1,6 @@
 package com.example.user.trpg_project_ver01;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -36,6 +37,11 @@ public class PlayVer2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_ver2);
+        Intent intent=this.getIntent();
+        Bundle bundle=intent.getExtras();
+        storyname=bundle.getString("storyuid");
+        Log.w(TAG, "get story uid"+storyname);
+
         userUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         choice1 = findViewById(R.id.choice1);
         choice2 = findViewById(R.id.choice2);
@@ -43,7 +49,7 @@ public class PlayVer2Activity extends AppCompatActivity {
         plot = FirebaseDatabase.getInstance().getReference("story/" + storyname + "/content/chapter/" + chapter + "/branch/" + branch);
         option1 = FirebaseDatabase.getInstance().getReference("story/" + storyname + "/content/chapter/" + chapter + "/branch/" + branch + "/option/1");
         option2 = FirebaseDatabase.getInstance().getReference("story/" + storyname + "/content/chapter/" + chapter + "/branch/" + branch + "/option/2");
-        Log.w("AG", "readposition inside ch" + chapter + "br" + branch);
+        Log.w(TAG, "readposition inside ch" + chapter + "br" + branch);
         //劇情listemer
         plot.addValueEventListener(new ValueEventListener() {
             @Override

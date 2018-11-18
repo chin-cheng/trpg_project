@@ -57,7 +57,7 @@ public class BaseActivity extends AppCompatActivity {
         } else if (id == R.id.play) {
             Intent intent = new Intent();
             //將原本Activity的換成MainActivity
-            intent.setClass(this, PlayVer2Activity.class);
+            intent.setClass(this, ShowStoryListActivity.class);
             startActivity(intent);
         }else if (id == R.id.exit) {
 
@@ -76,9 +76,12 @@ public class BaseActivity extends AppCompatActivity {
             Intent intent = new Intent();
             intent.setClass(this, CreateGameActivity.class);
             startActivity(intent);
-/*
-        } else if (id == R.id.nav_slideshow) {
 
+        } else if (id == R.id.edit) {
+            Intent intent = new Intent();
+            intent.setClass(this, ShowStoryListActivity.class);
+            startActivity(intent);
+/*
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {

@@ -46,36 +46,83 @@ public class ChoiceChapterActivity extends AppCompatActivity {
 
                         bundle.putInt("chapter",0);
                         bundle.putInt("branch",0);
+                        bundle.putInt("arroption1ch",1);
+                        bundle.putInt("arroption1br",1);
+                        bundle.putInt("arroption2ch",1);
+                        bundle.putInt("arroption2br",2);
 
+                        bundle.putInt("endcheck",0);
                         break;
                     case 1://1-1
                         bundle.putInt("chapter",1);
                         bundle.putInt("branch",1);
+
+                        bundle.putInt("arroption1ch",2);
+                        bundle.putInt("arroption1br",1);
+                        bundle.putInt("arroption2ch",2);
+                        bundle.putInt("arroption2br",2);
+
+                        bundle.putInt("endcheck",0);
                         break;
 
                     case 2://1-2
                         bundle.putInt("chapter",1);
                         bundle.putInt("branch",2);
+
+                        bundle.putInt("arroption1ch",2);
+                        bundle.putInt("arroption1br",3);
+                        bundle.putInt("arroption2ch",2);
+                        bundle.putInt("arroption2br",4);
+
+                        bundle.putInt("endcheck",0);
                         break;
 
                     case 3://2-1
                         bundle.putInt("chapter",2);
                         bundle.putInt("branch",1);
+
+                        bundle.putInt("arroption1ch",999);
+                        bundle.putInt("arroption1br",999);
+                        bundle.putInt("arroption2ch",999);
+                        bundle.putInt("arroption2br",999);
+
+                        bundle.putInt("endcheck",999);
                         break;
 
                     case 4://2-2
                         bundle.putInt("chapter",2);
                         bundle.putInt("branch",2);
+
+                        bundle.putInt("arroption1ch",999);
+                        bundle.putInt("arroption1br",999);
+                        bundle.putInt("arroption2ch",999);
+                        bundle.putInt("arroption2br",999);
+
+                        bundle.putInt("endcheck",999);
                         break;
 
                     case 5://2-3
                         bundle.putInt("chapter",2);
                         bundle.putInt("branch",3);
+
+                        bundle.putInt("arroption1ch",999);
+                        bundle.putInt("arroption1br",999);
+                        bundle.putInt("arroption2ch",999);
+                        bundle.putInt("arroption2br",999);
+
+                        bundle.putInt("endcheck",999);
                         break;
 
                     case 6://2-4
                         bundle.putInt("chapter",2);
                         bundle.putInt("branch",4);
+
+                        bundle.putInt("arroption1ch",999);
+                        bundle.putInt("arroption1br",999);
+                        bundle.putInt("arroption2ch",999);
+                        bundle.putInt("arroption2br",999);
+
+                        bundle.putInt("endcheck",999);
                         break;
 
                     default:

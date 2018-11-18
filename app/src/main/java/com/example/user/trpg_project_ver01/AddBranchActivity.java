@@ -22,6 +22,11 @@ public class AddBranchActivity extends AppCompatActivity {
     private ViewPager mViewPager;
     int chapter=0;
     int branch=0;
+    int arroption1ch=0;
+    int arroption1br=0;
+    int arroption2ch=0;
+    int arroption2br=0;
+    int endcheck=0;
     String key;
     private DatabaseReference writeplot;
     EditText plottext_edit,choice1text_edit,choice2text_edit;
@@ -37,10 +42,7 @@ public class AddBranchActivity extends AppCompatActivity {
         choice2text_edit=findViewById(R.id.choice2text_edit);
         writeposition=findViewById(R.id.writeposition);
 
-        ch1_chap=findViewById(R.id.ch1_chap);
-        ch1_bran=findViewById(R.id.ch1_bran);
-        ch2_chap=findViewById(R.id.ch2_chap);
-        ch2_bran=findViewById(R.id.ch2_bran);
+
 
         //取Bundle
         Intent intent=this.getIntent();
@@ -49,6 +51,12 @@ public class AddBranchActivity extends AppCompatActivity {
         writeplot= FirebaseDatabase.getInstance().getReference();
         chapter=bundle.getInt("chapter");
         branch=bundle.getInt("branch");
+
+        arroption1ch=bundle.getInt("arroption1ch");
+        arroption1br=bundle.getInt("arroption1br");
+        arroption2ch=bundle.getInt("arroption2ch");
+        arroption2br=bundle.getInt("arroption2br");
+        endcheck=bundle.getInt("endcheck");
 //final String position=;
         Log.w("test","key:"+key+"ch"+chapter+"br"+branch);
         writeposition.setText(chapter+"-"+branch);
@@ -63,7 +71,7 @@ public class AddBranchActivity extends AppCompatActivity {
                 //chapter
                 writeplot.child("story").child(key).child("content").child("chapter").child(String.valueOf(chapter)).child("branch").child(String.valueOf(branch)).child("chapter").setValue(chapter);
                 //endcheck
-                writeplot.child("story").child(key).child("content").child("chapter").child(String.valueOf(chapter)).child("branch").child(String.valueOf(branch)).child("endcheck").setValue(0);
+                writeplot.child("story").child(key).child("content").child("chapter").child(String.valueOf(chapter)).child("branch").child(String.valueOf(branch)).child("endcheck").setValue(endcheck);
                 //plot
                 writeplot.child("story").child(key).child("content").child("chapter").child(String.valueOf(chapter)).child("branch").child(String.valueOf(branch)).child("plot").setValue(plottext_edit.getText().toString());
                 //position
@@ -74,24 +82,27 @@ public class AddBranchActivity extends AppCompatActivity {
 
                 writeplot.child("story").child(key).child("content").child("chapter").child(String.valueOf(chapter)).child("branch").child(String.valueOf(branch)).child("option").child("1").child("option_name").setValue(choice1text_edit.getText().toString());
                 // option1arrchapter
-                writeplot.child("story").child(key).child("content").child("chapter").child(String.valueOf(chapter)).child("branch").child(String.valueOf(branch)).child("option").child("1").child("arrive_chapter").setValue(ch1_chap.getText().toString());
-
+                //writeplot.child("story").child(key).child("content").child("chapter").child(String.valueOf(chapter)).child("branch").child(String.valueOf(branch)).child("option").child("1").child("arrive_chapter").setValue(ch1_chap.getText().toString());
+                writeplot.child("story").child(key).child("content").child("chapter").child(String.valueOf(chapter)).child("branch").child(String.valueOf(branch)).child("option").child("1").child("arrive_chapter").setValue(arroption1ch);
 
                 //option1arrbranch
-                writeplot.child("story").child(key).child("content").child("chapter").child(String.valueOf(chapter)).child("branch").child(String.valueOf(branch)).child("option").child("1").child("arrive_branch").setValue(ch1_bran.getText().toString());
+                //writeplot.child("story").child(key).child("content").child("chapter").child(String.valueOf(chapter)).child("branch").child(String.valueOf(branch)).child("option").child("1").child("arrive_branch").setValue(ch1_bran.getText().toString());
+                writeplot.child("story").child(key).child("content").child("chapter").child(String.valueOf(chapter)).child("branch").child(String.valueOf(branch)).child("option").child("1").child("arrive_branch").setValue(arroption1br);
                 //optionposition
                 writeplot.child("story").child(key).child("content").child("chapter").child(String.valueOf(chapter)).child("branch").child(String.valueOf(branch)).child("option").child("1").child("option_position").setValue(1);
+
 
 
                 //option2
 
                 writeplot.child("story").child(key).child("content").child("chapter").child(String.valueOf(chapter)).child("branch").child(String.valueOf(branch)).child("option").child("2").child("option_name").setValue(choice2text_edit.getText().toString());
                 // option2arrchapter
-                writeplot.child("story").child(key).child("content").child("chapter").child(String.valueOf(chapter)).child("branch").child(String.valueOf(branch)).child("option").child("2").child("arrive_chapter").setValue(ch2_chap.getText().toString());
-
+                //writeplot.child("story").child(key).child("content").child("chapter").child(String.valueOf(chapter)).child("branch").child(String.valueOf(branch)).child("option").child("2").child("arrive_chapter").setValue(ch2_chap.getText().toString());
+                writeplot.child("story").child(key).child("content").child("chapter").child(String.valueOf(chapter)).child("branch").child(String.valueOf(branch)).child("option").child("2").child("arrive_chapter").setValue(arroption2ch);
 
                 //option2arrbranch
-                writeplot.child("story").child(key).child("content").child("chapter").child(String.valueOf(chapter)).child("branch").child(String.valueOf(branch)).child("option").child("2").child("arrive_branch").setValue(ch2_bran.getText().toString());
+                //writeplot.child("story").child(key).child("content").child("chapter").child(String.valueOf(chapter)).child("branch").child(String.valueOf(branch)).child("option").child("2").child("arrive_branch").setValue(ch2_bran.getText().toString());
+                writeplot.child("story").child(key).child("content").child("chapter").child(String.valueOf(chapter)).child("branch").child(String.valueOf(branch)).child("option").child("2").child("arrive_branch").setValue(arroption2br);
                 //optionposition
                 writeplot.child("story").child(key).child("content").child("chapter").child(String.valueOf(chapter)).child("branch").child(String.valueOf(branch)).child("option").child("2").child("option_position").setValue(2);
 

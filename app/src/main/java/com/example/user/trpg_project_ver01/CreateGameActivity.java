@@ -39,7 +39,7 @@ public class CreateGameActivity extends BaseActivity {
         create_style=findViewById(R.id.create_style_edit);
         create_storyintro=findViewById(R.id.create_storyintro_edit);
 
-        Toast.makeText(CreateGameActivity.this, userUID, Toast.LENGTH_LONG).show();
+       // Toast.makeText(CreateGameActivity.this, userUID, Toast.LENGTH_LONG).show();
        // Toast.makeText(CreateGameActivity.this, "auth"+auth, Toast.LENGTH_LONG).show();
     }
     public void nextpage(View v) throws InterruptedException {

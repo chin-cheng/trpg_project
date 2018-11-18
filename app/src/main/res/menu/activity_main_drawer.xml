@@ -21,10 +21,10 @@
             android:icon="@drawable/ic_menu_send"
             android:title="創造" />
         <item
-            android:id="@+id/information"
+            android:id="@+id/edit"
 
             android:icon="@android:drawable/ic_dialog_email"
-            android:title="通知" />
+            android:title="接續" />
         <item
             android:id="@+id/message"
 
