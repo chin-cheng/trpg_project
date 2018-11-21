@@ -3,6 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/side_nav_bar"
     android:orientation="vertical">
 
@@ -21,10 +22,17 @@
             android:layout_marginStart="24dp"
             android:layout_marginLeft="24dp"
             android:paddingBottom="8dp"
-            android:text="選單"
             android:textColor="#fff"
             android:textSize="28sp"
             android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/menu" />
+
     </LinearLayout>
 
 

@@ -1,6 +1,9 @@
 package com.example.user.trpg_project_ver01;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,7 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 public class PlayVer2Activity extends AppCompatActivity {
     private static String TAG = "PlayVer2Activity";
     private String userUID;
-    Button choice1, choice2, start;
+    Button choice1, choice2, restart;
     long chapter = 0;
     long branch = 0;
     long endcheck = 0;
@@ -31,21 +34,60 @@ public class PlayVer2Activity extends AppCompatActivity {
     DatabaseReference plot = FirebaseDatabase.getInstance().getReference("story/" + storyname + "/content/chapter/" + chapter + "/branch/" + branch);
     DatabaseReference option1 = FirebaseDatabase.getInstance().getReference("story/" + storyname + "/content/chapter/" + chapter + "/branch/" + branch + "/option/1");
     DatabaseReference option2 = FirebaseDatabase.getInstance().getReference("story/" + storyname + "/content/chapter/" + chapter + "/branch/" + branch + "/option/2");
+//    SharedPreferences sharedPreferences = PreferenceManager
+//            .getDefaultSharedPreferences(this);
+//    SharedPreferences.Editor pref = sharedPreferences.edit();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_ver2);
-        Intent intent=this.getIntent();
-        Bundle bundle=intent.getExtras();
-        storyname=bundle.getString("storyuid");
-        Log.w(TAG, "get story uid"+storyname);
+        Intent intent = this.getIntent();
+        Bundle bundle = intent.getExtras();
+        storyname = bundle.getString("storyuid");
+        Log.w(TAG, "get story uid" + storyname);
+
+        //取endcheck
+//        plot.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot snapshot) {
+//                // This method is called once with the initial value and again
+//                // whenever data at this location is updated.
+//                Poststory value = snapshot.getValue(Poststory.class);
+//                endcheck = value.endcheck;
+
+
+        SharedPreferences pref = getSharedPreferences(storyname, MODE_PRIVATE);
+
+        //取暫存
+        chapter = getSharedPreferences(storyname, MODE_PRIVATE)
+                .getLong("chapter", 0);
+        branch = getSharedPreferences(storyname, MODE_PRIVATE)
+                .getLong("branch", 0);
+        Log.w(TAG, "start getSharedPreferences+ch+br" + chapter + "+" + branch + "ecdcheck" + endcheck);
+
+//                if(endcheck==999) {
+//                    pref.edit()
+//                            .putLong("chapter", 0)
+//                            .putLong("branch", 0)
+//                            .commit();
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError error) {
+//                // Failed to read value
+//                Log.w(TAG, "Failed to read value.", error.toException());
+//            }
+//        });
+
 
         userUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         choice1 = findViewById(R.id.choice1);
         choice2 = findViewById(R.id.choice2);
         test = findViewById(R.id.test);
+
         plot = FirebaseDatabase.getInstance().getReference("story/" + storyname + "/content/chapter/" + chapter + "/branch/" + branch);
         option1 = FirebaseDatabase.getInstance().getReference("story/" + storyname + "/content/chapter/" + chapter + "/branch/" + branch + "/option/1");
         option2 = FirebaseDatabase.getInstance().getReference("story/" + storyname + "/content/chapter/" + chapter + "/branch/" + branch + "/option/2");
@@ -100,6 +142,16 @@ public class PlayVer2Activity extends AppCompatActivity {
                 } else {
                     choice1.setVisibility(View.INVISIBLE);
                     choice2.setVisibility(View.INVISIBLE);
+                    SharedPreferences pref = getSharedPreferences(storyname, MODE_PRIVATE);
+                    pref.edit()
+                            .putLong("chapter", 0)
+                            .putLong("branch", 0)
+                            .commit();
+                    chapter = getSharedPreferences(storyname, MODE_PRIVATE)
+                            .getLong("chapter", 0);
+                    branch = getSharedPreferences(storyname, MODE_PRIVATE)
+                            .getLong("branch", 0);
+                    Log.w(TAG, "put end  getSharedPreferences+ch+br" + chapter + "+" + branch);
                     Log.w(TAG, "story end");
 
 
@@ -115,6 +167,8 @@ public class PlayVer2Activity extends AppCompatActivity {
             }
         });
         //劇情listemer結束
+
+        //第一個取endcheck的listener結束
 
 
         //按鈕1setOnClickListener
@@ -182,6 +236,20 @@ public class PlayVer2Activity extends AppCompatActivity {
                                 } else {
                                     choice1.setVisibility(View.INVISIBLE);
                                     choice2.setVisibility(View.INVISIBLE);
+
+                                    SharedPreferences pref = getSharedPreferences(storyname, MODE_PRIVATE);
+                                    pref.edit()
+                                            .putLong("chapter", 0)
+                                            .putLong("branch", 0)
+                                            .commit();
+
+                                    chapter = getSharedPreferences(storyname, MODE_PRIVATE)
+                                            .getLong("chapter", 0);
+                                    branch = getSharedPreferences(storyname, MODE_PRIVATE)
+                                            .getLong("branch", 0);
+
+                                    Log.w(TAG, "put end  getSharedPreferences+ch+br" + chapter + "+" + branch);
+
                                     Log.w(TAG, "story end");
 
                                 }
@@ -274,6 +342,19 @@ public class PlayVer2Activity extends AppCompatActivity {
                                 } else {
                                     choice1.setVisibility(View.INVISIBLE);
                                     choice2.setVisibility(View.INVISIBLE);
+
+                                    SharedPreferences pref = getSharedPreferences(storyname, MODE_PRIVATE);
+                                    pref.edit()
+                                            .putLong("chapter", 0)
+                                            .putLong("branch", 0)
+                                            .commit();
+
+                                    chapter = getSharedPreferences(storyname, MODE_PRIVATE)
+                                            .getLong("chapter", 0);
+                                    branch = getSharedPreferences(storyname, MODE_PRIVATE)
+                                            .getLong("branch", 0);
+                                    Log.w(TAG, "put end  getSharedPreferences+ch+br" + chapter + "+" + branch);
+
                                     Log.w(TAG, "story end");
 
                                 }
@@ -303,5 +384,48 @@ public class PlayVer2Activity extends AppCompatActivity {
         //按鈕2listener結束
 
 
+    }
+
+    protected void onPause() {
+        super.onPause();
+        Log.w(TAG, "On Pause .....");
+        //String user = "jack";
+        SharedPreferences pref = getSharedPreferences(storyname, MODE_PRIVATE);
+        Log.w(TAG, "pause put SharedPreferences+ch+br" + chapter + "+" + branch);
+        pref.edit()
+                .putLong("chapter", chapter)
+                .putLong("branch", branch)
+                .commit();
+    }
+
+    public void restart(View v) {
+
+//        chapter = getSharedPreferences(storyname, MODE_PRIVATE)
+//                .getLong("chapter", 0);
+//        branch = getSharedPreferences(storyname, MODE_PRIVATE)
+//                .getLong("branch", 0);
+
+        SharedPreferences pref = getSharedPreferences(storyname, MODE_PRIVATE);
+        pref.edit()
+                .putLong("chapter", 0)
+                .putLong("branch", 0)
+                .commit();
+
+        chapter = getSharedPreferences(storyname, MODE_PRIVATE)
+                .getLong("chapter", 0);
+        branch = getSharedPreferences(storyname, MODE_PRIVATE)
+                .getLong("branch", 0);
+        finish();
+    }
+
+
+    protected void onStart() {
+        super.onStart();
+        Log.w(TAG, "On Start .....");
+        chapter = getSharedPreferences(storyname, MODE_PRIVATE)
+                .getLong("chapter", 0);
+        branch = getSharedPreferences(storyname, MODE_PRIVATE)
+                .getLong("branch", 0);
+        Log.w(TAG, "start getSharedPreferences+ch+br" + chapter + "+" + branch + "ecdcheck" + endcheck);
     }
 }

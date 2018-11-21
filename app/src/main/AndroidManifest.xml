@@ -32,7 +32,7 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".PlayActivity" />
+        <activity android:name="._PlayActivity" />
         <activity android:name=".CreateGameActivity" />
         <activity android:name=".AddBranchActivity" />
         <activity android:name=".ChoiceChapterActivity" />
