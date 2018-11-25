@@ -3,10 +3,12 @@ package com.example.user.trpg_project_ver01;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -14,7 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 
 public class BaseActivity extends AppCompatActivity {
-
+    private static final String TAG = "BaseActivity";
     private ProgressDialog mProgressDialog;
 
     public void showProgressDialog() {
@@ -56,8 +58,12 @@ public class BaseActivity extends AppCompatActivity {
             finish();
         } else if (id == R.id.play) {
             Intent intent = new Intent();
-            //將原本Activity的換成MainActivity
             intent.setClass(this, ShowStoryListActivity.class);
+            Bundle bundle = new Bundle();
+            String type="play";
+            bundle.putString("type", type);
+            Log.w(TAG, "type="+type);
+            intent.putExtras(bundle);
             startActivity(intent);
         }else if (id == R.id.exit) {
 
@@ -78,9 +84,17 @@ public class BaseActivity extends AppCompatActivity {
             startActivity(intent);
 
         } else if (id == R.id.edit) {
+
             Intent intent = new Intent();
             intent.setClass(this, ShowStoryListActivity.class);
+            Bundle bundle = new Bundle();
+            String type="edit";
+            bundle.putString("type", type);
+            Log.w(TAG, "type="+type);
+            intent.putExtras(bundle);
             startActivity(intent);
+
+
 /*
         } else if (id == R.id.nav_manage) {
 

@@ -62,7 +62,7 @@ public class CreateGameActivity extends BaseActivity {
         intent.putExtras(bundle);
         intent.setClass(CreateGameActivity.this, ChoiceChapterActivity.class);
         startActivity(intent);
-
+        finish();
 /*
         myRef.child(create_storyname.getText().toString()).child("author").setValue(create_author.getText().toString());//寫入作者
 */

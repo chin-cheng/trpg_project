@@ -37,7 +37,8 @@
         <activity android:name=".AddBranchActivity" />
         <activity android:name=".ChoiceChapterActivity" />
         <activity android:name=".PlayVer2Activity" />
-        <activity android:name=".ShowStoryListActivity"></activity>
+        <activity android:name=".ShowStoryListActivity" />
+        <activity android:name=".EditStoryActivity"></activity>
     </application>
 
 </manifest>

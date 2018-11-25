@@ -24,28 +24,57 @@ public class RegisterActivity extends AppCompatActivity {
     FirebaseAuth.AuthStateListener authListener;
     EditText regedit_mail,regedit_pawd,regedit_pawd_ver;
     Button reg_send;
+    int countt;
     private String userUID;
+    private String valid_email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
-
-regedit_mail=findViewById(R.id.regedit_mail);
-regedit_pawd=findViewById(R.id.regedit_pawd);
-regedit_pawd_ver=findViewById(R.id.regedit_pawd_ver);
-
-
-
-
+        regedit_mail=findViewById(R.id.regedit_mail);
+        regedit_pawd=findViewById(R.id.regedit_pawd);
+        regedit_pawd_ver=findViewById(R.id.regedit_pawd_ver);
     }
-
     public void onclickreg(View v){
         String email=regedit_mail.getText().toString();
         String password=regedit_pawd.getText().toString();
-
-    createUser(email,password);
-
+        String passwordagain=regedit_pawd_ver.getText().toString();
+        String pattern = "^.*@gmail\\.com$";
+        countt = password.length();
+        if(email.matches(pattern)){
+            if(countt > 5){
+                if(passwordagain.equals(password)){
+                    createUser(email,password);
+                }
+                else{
+                    new AlertDialog.Builder(RegisterActivity.this)
+                            .setTitle("驗證密碼錯誤")
+                            .setIcon(R.drawable.trpglogin)
+                            .setMessage("請檢查您的密碼是否輸入相同")
+                            .setPositiveButton("確定", new DialogInterface.OnClickListener(){
+                                public void onClick(DialogInterface dialog,int which){}})
+                            .show();
+                }
+            }
+            else{
+                new AlertDialog.Builder(RegisterActivity.this)
+                        .setTitle("密碼錯誤")
+                        .setIcon(R.drawable.trpglogin)
+                        .setMessage("請檢查您的密碼是否大於六碼")
+                        .setPositiveButton("確定", new DialogInterface.OnClickListener(){
+                            public void onClick(DialogInterface dialog,int which){}})
+                        .show();
+            }
+        }else{
+            new AlertDialog.Builder(RegisterActivity.this)
+                    .setTitle("信箱格式錯誤")
+                    .setIcon(R.drawable.trpglogin)
+                    .setMessage("請檢查您的信箱是否輸入正確")
+                    .setPositiveButton("確定", new DialogInterface.OnClickListener(){
+                        public void onClick(DialogInterface dialog,int which){
+                        }})
+                    .show();
+        }
     }
 
 

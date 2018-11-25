@@ -147,18 +147,18 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }
 
-    private void pushFriend(String name){
-        FirebaseDatabase db = FirebaseDatabase.getInstance();
-        DatabaseReference usersRef = db.getReference("users");
-        DatabaseReference friendsRef =
-                usersRef.child(userUID).child("friends").push();
-        Map<String, Object> friend = new HashMap<>();
-        friend.put("name", name);
-        friend.put("phone", "22334455");
-        friendsRef.setValue(friend);
-        String friendId = friendsRef.getKey();
-        Log.d("FRIEND", friendId+"");
-    }
+//    private void pushFriend(String name){
+//        FirebaseDatabase db = FirebaseDatabase.getInstance();
+//        DatabaseReference usersRef = db.getReference("users");
+//        DatabaseReference friendsRef =
+//                usersRef.child(userUID).child("friends").push();
+//        Map<String, Object> friend = new HashMap<>();
+//        friend.put("name", name);
+//        friend.put("phone", "22334455");
+//        friendsRef.setValue(friend);
+//        String friendId = friendsRef.getKey();
+//        Log.d("FRIEND", friendId+"");
+//    }
 
 
 }

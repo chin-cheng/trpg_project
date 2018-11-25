@@ -13,7 +13,7 @@ import android.widget.Toast;
 public class ChoiceChapterActivity extends AppCompatActivity {
     private static final String TAG = "ChoiceChapterActivity";
     ListView lv_showchapter;
-    String key="";
+    String key="",type="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +23,9 @@ public class ChoiceChapterActivity extends AppCompatActivity {
         Intent intent=this.getIntent();
         Bundle bundle=intent.getExtras();
         key=bundle.getString("key");
+        Log.w(TAG,"key:"+key);
+        type=bundle.getString("type");
+        Log.w(TAG,"type:"+type);
         Toast.makeText(ChoiceChapterActivity.this, key, Toast.LENGTH_LONG).show();
 
 
@@ -35,9 +38,16 @@ public class ChoiceChapterActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Log.w("lv",position+"");
+                Log.w(TAG,position+"");
                 Intent intent=new Intent();
-                intent.setClass(ChoiceChapterActivity.this,AddBranchActivity.class);
+                if(type.equals("edit")){
+                    intent.setClass(ChoiceChapterActivity.this, EditStoryActivity.class);
+                    Log.w(TAG,"to edit");
+                }else {
+                    intent.setClass(ChoiceChapterActivity.this, AddBranchActivity.class);
+                    Log.w(TAG,"to add");
+                }
+               // intent.setClass(ChoiceChapterActivity.this,AddBranchActivity.class);
                 Bundle bundle=new Bundle();
                 bundle.putString("key",key);
 
@@ -134,6 +144,7 @@ public class ChoiceChapterActivity extends AppCompatActivity {
 
                 intent.putExtras(bundle);
                 startActivity(intent);
+               // finish();
                 // Toast.makeText(MemberActivity.this,"第"+(position+1)+"條",Toast.LENGTH_SHORT).show();
             }
         });

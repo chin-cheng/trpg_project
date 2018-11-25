@@ -14,9 +14,10 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.user.trpg_project_ver01.models.Post;
 import com.example.user.trpg_project_ver01.models.Postchoose;
 import com.example.user.trpg_project_ver01.models.Poststory;
-import com.example.user.trpg_project_ver01.models.user;
+import com.example.user.trpg_project_ver01.models.User;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -39,6 +40,9 @@ public class ShowStoryListActivity extends BaseActivity {
     String[] storyname = new String[999];
     int count = 0;
     int lvlong = 0;
+String type="";
+
+
     //by kuo
     ArrayList title1 = new ArrayList();
     ArrayList style1 = new ArrayList();
@@ -53,6 +57,11 @@ public class ShowStoryListActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_story_list);
         lv_showstory = findViewById(R.id.lv_showstory);
+
+        Intent intentget=this.getIntent();
+        Bundle bundleget=intentget.getExtras();
+        type=bundleget.getString("type");
+
 //by kuo
         storynametext = findViewById(R.id.storyname);
         storyintrotext = findViewById(R.id.storyintro);
@@ -105,40 +114,48 @@ public class ShowStoryListActivity extends BaseActivity {
 
         //by kuo
 
+        username = "應該要是暱稱";
+
+
         DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("story");
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot Snapshot : dataSnapshot.getChildren()) {
+                    Log.w(TAG,"choose list"+Snapshot);
                     Postchoose value = Snapshot.getValue(Postchoose.class);
-                    username = "應該要是暱稱";
-                    Log.w(TAG,"_username"+username+"\n uid"+value.author_uid+"41325");
+
+                    Log.w(TAG,"_username"+username+"\n uid"+value.author_uid);
 
 //要把uid改成nickname的bug未解
-//                    DatabaseReference getusername = FirebaseDatabase.getInstance().getReference("users/" + value.author_uid);
-////其實只要用取單筆資料的Listener就好
-//                   // getusername = FirebaseDatabase.getInstance().getReference("users/" + value.author_uid + "/useruid");
-//                    getusername.addValueEventListener(new ValueEventListener() {
-//
-//                        @Override
-//                        public void onDataChange(DataSnapshot dataSnapshot) {
-//                            for (DataSnapshot Snapshot : dataSnapshot.getChildren()) {
-//                                user value = Snapshot.getValue(user.class);
-//                                username = value.nickname;
-//                                Log.w(TAG,"username!!!"+username);
-//                            }
-//
-//                        }
-//
-//                        @Override
-//                        public void onCancelled(DatabaseError firebaseError) {
-//                            Log.w(TAG,"username error"+username);
-//                        }
-//
-//                    });
+
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference getusername = database.getReference("users/"+value.author_uid+"");
+                    // getReference("users/9FS0dg1lZ4cwMdqbnV7d4ejnR8E2");
 
 
-                    //  a.add(value.title);
+                    getusername.addListenerForSingleValueEvent(new ValueEventListener() {
+
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                          //  for (DataSnapshot Snapshot : dataSnapshot.getChildren()) {
+                                Log.w(TAG,"users:"+dataSnapshot);
+                                Post value = dataSnapshot.getValue(Post.class);
+
+                                username = value.nickname;
+//塞進去
+                                Log.w(TAG,"username!!!"+username);
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError firebaseError) {
+                            Log.w(TAG,"username error"+username);
+                        }
+
+                    });
+
+
                     title1.add(value.title);
                     style1.add(value.style);
                     author1.add(username);
@@ -178,15 +195,26 @@ public class ShowStoryListActivity extends BaseActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.d(TAG, "total listview long" + lv_showstory.getCount());
                 Log.w("lv postition", position + "");
+                Log.w(TAG, "type:"+type);
                 Intent intent = new Intent();
-                intent.setClass(ShowStoryListActivity.this, PlayVer2Activity.class);
                 Bundle bundle = new Bundle();
+if(type.equals("edit")){
+    intent.setClass(ShowStoryListActivity.this, ChoiceChapterActivity.class);
+    bundle.putString("type", "edit");
+}else if(type.equals("play")){
+    intent.setClass(ShowStoryListActivity.this, PlayVer2Activity.class);
+    bundle.putString("type", "play");
+}
+
+
                 bundle.putString("storyuid", storyuid[position]);
+                bundle.putString("key", storyuid[position]);
                 Log.w(TAG, "get story uid" + storyname[position]);
 
 
                 intent.putExtras(bundle);
                 startActivity(intent);
+                finish();
                 // Toast.makeText(MemberActivity.this,"第"+(position+1)+"條",Toast.LENGTH_SHORT).show();
             }
         });
