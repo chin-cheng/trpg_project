@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--這裡是修改側邊攔上方的東西-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/side_nav_bar"
     android:orientation="vertical">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:background="@color/common_google_signin_btn_text_light_focused"
+        android:background="#642100"
         android:orientation="horizontal">
 
         <TextView
@@ -22,7 +21,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginLeft="24dp"
             android:paddingBottom="8dp"
-            android:textColor="#fff"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
             android:textSize="28sp"
             android:textStyle="bold" />
 
@@ -36,47 +35,10 @@
     </LinearLayout>
 
 
-   <LinearLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
- <!--
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Button
-                android:text="購物車"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btn1"
-                android:layout_weight="1"
-                android:background="@android:color/holo_green_light"
-                android:drawableTop="@android:drawable/btn_star_big_on"
-                android:padding="5dp" />
-
-            <Button
-                android:text="訂單"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btn2"
-                android:layout_weight="1"
-                android:drawableTop="@android:drawable/btn_star_big_on"
-                android:background="@android:color/holo_green_light"
-                android:padding="5dp" />
-
-            <Button
-                android:text="全部商品"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btn3"
-                android:layout_weight="1"
-                android:background="@android:color/holo_green_light"
-                android:drawableTop="@android:drawable/btn_star_big_on"
-                android:padding="5dp" />
-        </LinearLayout>
-        -->
 
 
     </LinearLayout>

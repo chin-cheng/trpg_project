@@ -11,10 +11,13 @@
         android:id="@+id/reg_mail"
         android:layout_width="match_parent"
         android:layout_height="32dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
         android:text="Email"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,10 +27,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:ems="10"
         android:hint="請輸入email"
         android:inputType="textEmailAddress"
-        android:singleLine="true"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/reg_mail"
         app:layout_constraintTop_toBottomOf="@+id/reg_mail" />
 
@@ -35,12 +41,15 @@
         android:id="@+id/reg_pawd"
         android:layout_width="match_parent"
         android:layout_height="32dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
         android:text="輸入密碼"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/regedit_mail" />
 
     <EditText
         android:id="@+id/regedit_pawd"
@@ -48,9 +57,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:ems="10"
-        android:inputType="textPassword"
         android:hint="密碼須中英混雜且在六位以上"
+        android:inputType="textPassword"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/reg_pawd"
         app:layout_constraintTop_toBottomOf="@+id/reg_pawd" />
 
@@ -58,12 +71,15 @@
         android:id="@+id/reg_pawd_ver"
         android:layout_width="match_parent"
         android:layout_height="32dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="208dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
         android:text="再輸入一次密碼"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/regedit_pawd" />
 
     <EditText
         android:id="@+id/regedit_pawd_ver"
@@ -71,9 +87,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:ems="10"
-        android:inputType="textPassword"
         android:hint="請輸入跟剛剛一樣的密碼"
+        android:inputType="textPassword"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/reg_pawd_ver"
         app:layout_constraintTop_toBottomOf="@+id/reg_pawd_ver" />
 
