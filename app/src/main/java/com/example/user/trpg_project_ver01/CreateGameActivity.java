@@ -29,6 +29,7 @@ public class CreateGameActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTitle("創造故事");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_game);
          userUID= getUid();

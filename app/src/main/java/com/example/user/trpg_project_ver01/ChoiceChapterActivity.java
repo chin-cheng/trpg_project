@@ -17,6 +17,7 @@ public class ChoiceChapterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("選擇分支");
         setContentView(R.layout.activity_choice_chapter);
         lv_showchapter=findViewById(R.id.lv_showchapter);
         String[]func={"0-0","1-1","1-2","2-1","2-2","2-3","2-4"};

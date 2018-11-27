@@ -44,6 +44,7 @@ public class MainActivity extends BaseActivity
     FirebaseUser user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTitle("首頁");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 

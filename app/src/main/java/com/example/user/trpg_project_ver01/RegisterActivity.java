@@ -29,6 +29,7 @@ public class RegisterActivity extends AppCompatActivity {
     private String valid_email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTitle("註冊會員");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         regedit_mail=findViewById(R.id.regedit_mail);

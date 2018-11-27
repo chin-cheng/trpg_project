@@ -46,7 +46,7 @@ public class _PlayActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
 //目前問題為讀取時不會依照程式碼先後進行讀取,詳見log的ch及ch2之問題,可能與執行序相關
-
+        setTitle("遊玩故事");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
         mDatabase = FirebaseDatabase.getInstance().getReference();

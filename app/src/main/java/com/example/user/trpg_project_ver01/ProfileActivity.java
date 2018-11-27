@@ -38,6 +38,7 @@ Spinner pro_sex_spinner;
     private String sex;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTitle("個人資料");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 

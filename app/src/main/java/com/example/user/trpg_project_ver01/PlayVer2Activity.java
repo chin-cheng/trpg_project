@@ -41,6 +41,7 @@ public class PlayVer2Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTitle("遊玩故事");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_ver2);
         Intent intent = this.getIntent();

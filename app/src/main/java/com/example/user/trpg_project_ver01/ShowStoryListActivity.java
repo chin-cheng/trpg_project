@@ -54,6 +54,7 @@ String type="";
     //by kuo end
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTitle("所有故事");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_story_list);
         lv_showstory = findViewById(R.id.lv_showstory);

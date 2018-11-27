@@ -13,6 +13,13 @@
         android:background="#642100"
         android:orientation="horizontal">
 
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/menu" />
+
         <TextView
             android:id="@+id/na"
             android:layout_width="wrap_content"
@@ -24,13 +31,6 @@
             android:textColor="@color/common_google_signin_btn_text_dark_focused"
             android:textSize="28sp"
             android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/menu" />
 
     </LinearLayout>
 

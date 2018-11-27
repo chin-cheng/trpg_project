@@ -37,6 +37,7 @@ public class MemberActivity extends BaseActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTitle("會員");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_member);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

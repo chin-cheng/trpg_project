@@ -38,6 +38,7 @@ public class EditStoryActivity extends AppCompatActivity {
     private static final String TAG = "EditStoryActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTitle("故事內容");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_branch);
 

@@ -23,7 +23,7 @@
         <item
             android:id="@+id/edit"
 
-            android:icon="@android:drawable/ic_dialog_email"
+            android:icon="@drawable/ic_menu_send"
             android:title="接續" />
         <item
             android:id="@+id/message"
