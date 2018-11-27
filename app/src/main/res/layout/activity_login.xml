@@ -14,11 +14,13 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+        android:layout_width="77dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="188dp"
+        android:layout_marginTop="190dp"
         android:text="Email"
         android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#642100"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,10 +28,12 @@
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="64dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="11dp"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:inputType="textEmailAddress"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        tools:layout_editor_absoluteX="20dp" />
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
         android:id="@+id/textView3"
@@ -38,6 +42,8 @@
         android:layout_marginTop="16dp"
         android:text="Password"
         android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#642100"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/email"
         app:layout_constraintTop_toBottomOf="@+id/email" />
 
@@ -45,8 +51,10 @@
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="64dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="11dp"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:inputType="textPassword"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -57,9 +65,12 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/buttonstyle"
         android:onClick="login"
-        android:text="LOGIN"
+        android:text="登入"
+        android:textColor="#642100"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/password"
         app:layout_constraintTop_toBottomOf="@+id/password" />
@@ -71,21 +82,25 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/buttonstyle"
         android:onClick="register"
         android:text="註冊"
+        android:textColor="#642100"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/password"
         app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="228dp"
-        android:layout_height="127dp"
+        android:layout_width="255dp"
+        android:layout_height="180dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/trpglogin" />
