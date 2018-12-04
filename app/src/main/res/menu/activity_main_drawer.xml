@@ -13,39 +13,31 @@
         <item
             android:id="@+id/play"
 
-            android:icon="@drawable/ic_menu_send"
+            android:icon="@drawable/playbutton"
             android:title="遊玩" />
         <item
             android:id="@+id/create"
 
-            android:icon="@drawable/ic_menu_send"
+            android:icon="@drawable/edit"
             android:title="創造" />
         <item
             android:id="@+id/edit"
 
             android:icon="@drawable/ic_menu_send"
             android:title="接續" />
-        <item
-            android:id="@+id/message"
 
-            android:icon="@android:drawable/stat_notify_chat"
-            android:title="訊息" />
         <item
             android:id="@+id/member"
 
             android:icon="@android:drawable/ic_input_get"
             android:title="會員專區" />
-        <item
-            android:id="@+id/set"
 
-            android:icon="@drawable/ic_menu_manage"
-            android:title="系統設定" />
-        <item
-            android:id="@+id/feedback"
+        <!--<item-->
+            <!--android:id="@+id/home"-->
 
-            android:layout_height="wrap_content"
-            android:icon="@android:drawable/ic_dialog_info"
-            android:title="意見回饋" />
+            <!--android:icon="@android:drawable/ic_input_get"-->
+            <!--android:title="首頁" />-->
+
 
     </group>
 

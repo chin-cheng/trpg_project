@@ -43,7 +43,7 @@ public class MemberActivity extends BaseActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        String[] func={"個人資料","我的最愛","我的訊息","我的訂閱","活動紀錄","其他東西","不知道有啥"};
+        String[] func={"個人資料"};
         ListView lv=findViewById(R.id.lv);
         ArrayAdapter adapter =new ArrayAdapter(this,android.R.layout.simple_list_item_1,func);
         lv.setAdapter(adapter);

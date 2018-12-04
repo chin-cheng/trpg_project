@@ -83,7 +83,7 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/buttonstyle"
         android:onClick="test"
-        android:text="start"
+        android:text="首頁"
         android:textColor="#642100"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"

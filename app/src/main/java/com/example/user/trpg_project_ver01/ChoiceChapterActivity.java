@@ -20,7 +20,7 @@ public class ChoiceChapterActivity extends AppCompatActivity {
         setTitle("選擇分支");
         setContentView(R.layout.activity_choice_chapter);
         lv_showchapter=findViewById(R.id.lv_showchapter);
-        String[]func={"0-0","1-1","1-2","2-1","2-2","2-3","2-4"};
+        String[]func={"開頭","分支1","分支2","分支1-1","分支1-2","分支2-1","分支2-2"};
         Intent intent=this.getIntent();
         Bundle bundle=intent.getExtras();
         key=bundle.getString("key");
@@ -40,13 +40,16 @@ public class ChoiceChapterActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Log.w(TAG,position+"");
+                Log.w(TAG,""+type);
                 Intent intent=new Intent();
-                if(type.equals("edit")){
-                    intent.setClass(ChoiceChapterActivity.this, EditStoryActivity.class);
-                    Log.w(TAG,"to edit");
-                }else {
+
+                if(type==null){
                     intent.setClass(ChoiceChapterActivity.this, AddBranchActivity.class);
                     Log.w(TAG,"to add");
+
+                }else {
+                    intent.setClass(ChoiceChapterActivity.this, EditStoryActivity.class);
+                    Log.w(TAG,"to edit");
                 }
                // intent.setClass(ChoiceChapterActivity.this,AddBranchActivity.class);
                 Bundle bundle=new Bundle();

@@ -74,8 +74,9 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         Log.d("onComplete", "onComplete");
-                        Intent intent=new Intent();intent.setClass(LoginActivity.this, MemberActivity.class);
+                        Intent intent=new Intent();intent.setClass(LoginActivity.this, ProfileActivity.class);
                         startActivity(intent);
+                        finish();
                         if (!task.isSuccessful()){
                             Log.d("onComplete", "登入失敗");
                             //register(email, password);

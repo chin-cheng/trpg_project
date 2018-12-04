@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">trpg_project_ver0.1</string>
+    <string name="app_name">創玩故事</string>
     <string name="welcome_text">歡迎使用TRPG</string>
     <string name="memberspace">會員專區</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>

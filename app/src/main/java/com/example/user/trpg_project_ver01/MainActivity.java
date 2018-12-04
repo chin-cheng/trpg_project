@@ -3,6 +3,7 @@ package com.example.user.trpg_project_ver01;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -13,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,7 +28,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends BaseActivity
+
         implements NavigationView.OnNavigationItemSelectedListener {
+    FirebaseAuth auth;
+    FirebaseAuth.AuthStateListener authListener;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference("message");
+
     /*
      * 歡迎畫面_WelcomeActivity.java
      * 主介面(選擇遊玩或創建)_MainActivity.java
@@ -39,7 +47,7 @@ public class MainActivity extends BaseActivity
      * by CHANG,CHIN-CHENG
      * */
 
-    Button testbtn;
+    Button testbtn,playbutton,creatbutton;
     TextView username;
     FirebaseUser user;
     @Override
@@ -47,9 +55,24 @@ public class MainActivity extends BaseActivity
         setTitle("首頁");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+playbutton=findViewById(R.id.playbotton);
+creatbutton=findViewById(R.id.creatbutton);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        auth = FirebaseAuth.getInstance();
+        authListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user==null) {
+                    startActivityForResult(new Intent(MainActivity.this, LoginActivity.class),1 );
+                }else{
+                    // TODO after login
+                }
+            }
+        };
+
+
 //寫入測試
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("message/sc");
@@ -122,6 +145,36 @@ public class MainActivity extends BaseActivity
 //崩潰測試結束
 */
     }
+    protected void onStart() {
+        super.onStart();
+        auth.addAuthStateListener(authListener);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        auth.removeAuthStateListener(authListener);
+
+    }
+
+    public void playbutton(View v)
+    {
+        Intent intent = new Intent();
+        intent.setClass(this, ShowStoryListActivity.class);
+        Bundle bundle = new Bundle();
+        String type="play";
+        bundle.putString("type", type);
+
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    public void creatbutton(View v)
+    {
+        Intent intent = new Intent();
+        intent.setClass(this, CreateGameActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     public void onBackPressed() {
@@ -149,6 +202,9 @@ public class MainActivity extends BaseActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+
+                auth.signOut();
+
             return true;
         }
 

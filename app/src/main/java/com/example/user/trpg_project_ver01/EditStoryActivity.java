@@ -23,19 +23,20 @@ import com.google.firebase.database.ValueEventListener;
 public class EditStoryActivity extends AppCompatActivity {
     private FragmentPagerAdapter mPagerAdapter;
     private ViewPager mViewPager;
-    int chapter=0;
-    int branch=0;
-    int arroption1ch=0;
-    int arroption1br=0;
-    int arroption2ch=0;
-    int arroption2br=0;
-    int endcheck=0;
-    String key,storyname;
+    int chapter = 0;
+    int branch = 0;
+    int arroption1ch = 0;
+    int arroption1br = 0;
+    int arroption2ch = 0;
+    int arroption2br = 0;
+    int endcheck = 0;
+    String key, storyname;
     private DatabaseReference writeplot;
-    EditText plottext_edit,choice1text_edit,choice2text_edit;
-    EditText ch1_chap,ch1_bran,ch2_chap,ch2_bran;
+    EditText plottext_edit, choice1text_edit, choice2text_edit;
+    EditText ch1_chap, ch1_bran, ch2_chap, ch2_bran;
     TextView writeposition;
     private static final String TAG = "EditStoryActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTitle("故事內容");
@@ -47,34 +48,29 @@ public class EditStoryActivity extends AppCompatActivity {
 //        storyname = bundle.getString("storyuid");
 //        Log.w(TAG, "get story uid" + storyname);
 
-        plottext_edit=findViewById(R.id.plottext_edit);
-        choice1text_edit=findViewById(R.id.choice1text_edit);
-        choice2text_edit=findViewById(R.id.choice2text_edit);
-        writeposition=findViewById(R.id.writeposition);
-
-
-
-
-
+        plottext_edit = findViewById(R.id.plottext_edit);
+        choice1text_edit = findViewById(R.id.choice1text_edit);
+        choice2text_edit = findViewById(R.id.choice2text_edit);
+        writeposition = findViewById(R.id.writeposition);
 
 
         //取Bundle
-        Intent intent=this.getIntent();
-        Bundle bundle=intent.getExtras();
-        key=bundle.getString("key");
-        Log.w(TAG,"key:"+key);
-        writeplot= FirebaseDatabase.getInstance().getReference();
-        chapter=bundle.getInt("chapter");
-        branch=bundle.getInt("branch");
+        Intent intent = this.getIntent();
+        Bundle bundle = intent.getExtras();
+        key = bundle.getString("key");
+        Log.w(TAG, "key:" + key);
+        writeplot = FirebaseDatabase.getInstance().getReference();
+        chapter = bundle.getInt("chapter");
+        branch = bundle.getInt("branch");
 
-        arroption1ch=bundle.getInt("arroption1ch");
-        arroption1br=bundle.getInt("arroption1br");
-        arroption2ch=bundle.getInt("arroption2ch");
-        arroption2br=bundle.getInt("arroption2br");
-        endcheck=bundle.getInt("endcheck");
+        arroption1ch = bundle.getInt("arroption1ch");
+        arroption1br = bundle.getInt("arroption1br");
+        arroption2ch = bundle.getInt("arroption2ch");
+        arroption2br = bundle.getInt("arroption2br");
+        endcheck = bundle.getInt("endcheck");
 //final String position=;
-        Log.w("test","key:"+key+"ch"+chapter+"br"+branch);
-        writeposition.setText(chapter+"-"+branch);
+        Log.w("test", "key:" + key + "ch" + chapter + "br" + branch);
+        writeposition.setText(chapter + "-" + branch);
 
 
         //加入原劇情的字
@@ -87,50 +83,65 @@ public class EditStoryActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
+                if (dataSnapshot.getValue() != null) {
                 Poststory value = dataSnapshot.getValue(Poststory.class);
-                plottext_edit.setText(value.plot);
-                Log.d("TAG", "Value is: " + value.plot);
+
+                    plottext_edit.setText(value.plot);
+                    Log.d(TAG, "Value is: " + value.plot);
+                }
             }
+
             @Override
             public void onCancelled(DatabaseError error) {
                 // Failed to read value
-                Log.w("AG", "Failed to read value.", error.toException());
+                Log.w(TAG, "Failed to read value.", error.toException());
             }
         });
 
         //加入原選項1的字
-        DatabaseReference option1 = database.getReference("story/" + key + "/content/chapter/" + chapter + "/branch/" + branch+"/option/1");
+        DatabaseReference option1 = database.getReference("story/" + key + "/content/chapter/" + chapter + "/branch/" + branch + "/option/1");
         option1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                Postoption value = dataSnapshot.getValue(Postoption.class);
-                choice1text_edit.setText(value.option_name);
-                Log.d("TAG", "option_name is: " + value.option_name);
+                if (dataSnapshot.getValue() != null) {
+                    Postoption value = dataSnapshot.getValue(Postoption.class);
+
+                    choice1text_edit.setText(value.option_name);
+                    Log.d(TAG, "option_name is: " + value.option_name);
+
+
+                }
             }
+
+
             @Override
             public void onCancelled(DatabaseError error) {
                 // Failed to read value
-                Log.w("AG", "Failed to read value.", error.toException());
+                Log.w(TAG, "Failed to read value.", error.toException());
             }
         });
 
         //加入原選項2的字
-        DatabaseReference option2 = database.getReference("story/" + key + "/content/chapter/" + chapter + "/branch/" + branch+"/option/2");
-        option1.addValueEventListener(new ValueEventListener() {
+        DatabaseReference option2 = database.getReference("story/" + key + "/content/chapter/" + chapter + "/branch/" + branch + "/option/2");
+        option2.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                Postoption value = dataSnapshot.getValue(Postoption.class);
-                choice2text_edit.setText(value.option_name);
-                Log.d("TAG", "option_name is: " + value.option_name);
+                if (dataSnapshot.getValue() != null) {
+                    Postoption value = dataSnapshot.getValue(Postoption.class);
+
+                    choice2text_edit.setText(value.option_name);
+                    Log.d(TAG, "option_name is: " + value.option_name);
+                }
             }
+
             @Override
             public void onCancelled(DatabaseError error) {
                 // Failed to read value
-                Log.w("AG", "Failed to read value.", error.toException());
+                Log.w(TAG, "Failed to read value.", error.toException());
             }
         });
 
@@ -139,9 +150,6 @@ public class EditStoryActivity extends AppCompatActivity {
         findViewById(R.id.fabNewPost).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-
 
 
                 //branch
@@ -153,7 +161,7 @@ public class EditStoryActivity extends AppCompatActivity {
                 //plot
                 writeplot.child("story").child(key).child("content").child("chapter").child(String.valueOf(chapter)).child("branch").child(String.valueOf(branch)).child("plot").setValue(plottext_edit.getText().toString());
                 //position
-                writeplot.child("story").child(key).child("content").child("chapter").child(String.valueOf(chapter)).child("branch").child(String.valueOf(branch)).child("position").setValue(chapter+"-"+branch);
+                writeplot.child("story").child(key).child("content").child("chapter").child(String.valueOf(chapter)).child("branch").child(String.valueOf(branch)).child("position").setValue(chapter + "-" + branch);
 
 
                 //option1
@@ -170,7 +178,6 @@ public class EditStoryActivity extends AppCompatActivity {
                 writeplot.child("story").child(key).child("content").child("chapter").child(String.valueOf(chapter)).child("branch").child(String.valueOf(branch)).child("option").child("1").child("option_position").setValue(1);
 
 
-
                 //option2
 
                 writeplot.child("story").child(key).child("content").child("chapter").child(String.valueOf(chapter)).child("branch").child(String.valueOf(branch)).child("option").child("2").child("option_name").setValue(choice2text_edit.getText().toString());
@@ -185,7 +192,7 @@ public class EditStoryActivity extends AppCompatActivity {
                 writeplot.child("story").child(key).child("content").child("chapter").child(String.valueOf(chapter)).child("branch").child(String.valueOf(branch)).child("option").child("2").child("option_position").setValue(2);
 
 
-                Toast.makeText(EditStoryActivity.this, "ok", Toast.LENGTH_LONG).show();
+                Toast.makeText(EditStoryActivity.this, "修改完成!", Toast.LENGTH_LONG).show();
                 finish();
             }
         });

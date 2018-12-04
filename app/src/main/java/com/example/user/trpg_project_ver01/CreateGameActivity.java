@@ -5,24 +5,30 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.user.trpg_project_ver01.models.Post;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import static java.lang.Thread.sleep;
 
 public class CreateGameActivity extends BaseActivity {
    // FirebaseAuth auth;
-
+   private static final String TAG = "CreateGameActivity";
     FirebaseAuth.AuthStateListener authListener;
     FirebaseDatabase db = FirebaseDatabase.getInstance();
     DatabaseReference story = db.getReference("story");
     private String userUID;
+    private String username;
     EditText create_storyname,create_storyintro;
     EditText create_style;
     String author="",style="",title="";
@@ -42,13 +48,40 @@ public class CreateGameActivity extends BaseActivity {
 
        // Toast.makeText(CreateGameActivity.this, userUID, Toast.LENGTH_LONG).show();
        // Toast.makeText(CreateGameActivity.this, "auth"+auth, Toast.LENGTH_LONG).show();
+
+
+          FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference getusername = database.getReference("users/"+userUID+"");
+                    // getReference("users/9FS0dg1lZ4cwMdqbnV7d4ejnR8E2");
+
+
+                    getusername.addValueEventListener(new ValueEventListener() {
+
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                          //  for (DataSnapshot Snapshot : dataSnapshot.getChildren()) {
+                                Log.w(TAG,"users:"+dataSnapshot);
+                                Post value = dataSnapshot.getValue(Post.class);
+
+                             username=value.nickname;
+//塞進去
+
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError firebaseError) {
+
+                        }
+
+                    });
     }
     public void nextpage(View v) throws InterruptedException {
 
         String key=story.push().getKey();
 
         story.child(key).child("key").setValue(key);
-        story.child(key).child("author_uid").setValue(userUID);
+        story.child(key).child("author_uid").setValue(username);
         story.child(key).child("style").setValue(create_style.getText().toString());
         story.child(key).child("title").setValue(create_storyname.getText().toString());
         story.child(key).child("storyintro").setValue(create_storyintro.getText().toString());

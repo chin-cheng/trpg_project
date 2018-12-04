@@ -47,15 +47,14 @@ public class BaseActivity extends AppCompatActivity {
 
         if (id == R.id.member) {
             // Handle the camera action
-            Toast toast = Toast.makeText(this,
-                    "Hell!", Toast.LENGTH_LONG);
+            //Toast toast = Toast.makeText(this, "Hell!", Toast.LENGTH_LONG);
             //顯示Toast
-            toast.show();
+            //toast.show();
             Intent intent = new Intent();
             //將原本Activity的換成MainActivity
-            intent.setClass(this, MemberActivity.class);
+            intent.setClass(this, ProfileActivity.class);
             startActivity(intent);
-            finish();
+           // finish();
         } else if (id == R.id.play) {
             Intent intent = new Intent();
             intent.setClass(this, ShowStoryListActivity.class);
@@ -76,7 +75,7 @@ public class BaseActivity extends AppCompatActivity {
                     .setPositiveButton("yes",new DialogInterface.OnClickListener(){
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            finish();}}).show();
+                            }}).show();
 
         }else if (id == R.id.create) {
             Intent intent = new Intent();
@@ -95,9 +94,15 @@ public class BaseActivity extends AppCompatActivity {
             startActivity(intent);
 
 
-/*
-        } else if (id == R.id.nav_manage) {
 
+       /* } else if (id == R.id.home ){
+            Intent intent = new Intent();
+            intent.setClass(this, MainActivity.class);
+            startActivity(intent);
+            finish();
+
+            */
+/*
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {

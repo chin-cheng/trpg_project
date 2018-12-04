@@ -31,7 +31,7 @@ import java.util.HashMap;
 public class ShowStoryListActivity extends BaseActivity {
     FirebaseDatabase db = FirebaseDatabase.getInstance();
     private static final String TAG = "ShowStoryListActivity";
-    String username = "";
+
 
     ListView lv_showstory;
     TextView storyintrotext, storynametext, authortext, styletext;
@@ -115,7 +115,6 @@ String type="";
 
         //by kuo
 
-        username = "應該要是暱稱";
 
 
         DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("story");
@@ -125,41 +124,42 @@ String type="";
                 for (DataSnapshot Snapshot : dataSnapshot.getChildren()) {
                     Log.w(TAG,"choose list"+Snapshot);
                     Postchoose value = Snapshot.getValue(Postchoose.class);
-
-                    Log.w(TAG,"_username"+username+"\n uid"+value.author_uid);
+                    final String[] username = {""};
+                    username[0] = "應該要是暱稱";
+                    Log.w(TAG,"_username"+ username[0] +"\n uid"+value.author_uid);
 
 //要把uid改成nickname的bug未解
 
-                    FirebaseDatabase database = FirebaseDatabase.getInstance();
-                    DatabaseReference getusername = database.getReference("users/"+value.author_uid+"");
-                    // getReference("users/9FS0dg1lZ4cwMdqbnV7d4ejnR8E2");
+//                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+//                    DatabaseReference getusername = database.getReference("users/"+value.author_uid+"");
+//                    // getReference("users/9FS0dg1lZ4cwMdqbnV7d4ejnR8E2");
+//
+//
+//                    getusername.addValueEventListener(new ValueEventListener() {
+//
+//                        @Override
+//                        public void onDataChange(DataSnapshot dataSnapshot) {
+//                          //  for (DataSnapshot Snapshot : dataSnapshot.getChildren()) {
+//                                Log.w(TAG,"users:"+dataSnapshot);
+//                                Post value = dataSnapshot.getValue(Post.class);
+//
+//                             //   username[0] = value.nickname;
+////塞進去
+//                                Log.w(TAG,"username!!!"+ username[0]);
+//
+//                        }
+//
+//                        @Override
+//                        public void onCancelled(DatabaseError firebaseError) {
+//                            Log.w(TAG,"username error"+ username[0]);
+//                        }
+//
+//                    });
 
-
-                    getusername.addListenerForSingleValueEvent(new ValueEventListener() {
-
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                          //  for (DataSnapshot Snapshot : dataSnapshot.getChildren()) {
-                                Log.w(TAG,"users:"+dataSnapshot);
-                                Post value = dataSnapshot.getValue(Post.class);
-
-                                username = value.nickname;
-//塞進去
-                                Log.w(TAG,"username!!!"+username);
-
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError firebaseError) {
-                            Log.w(TAG,"username error"+username);
-                        }
-
-                    });
-
-
+                    Log.w(TAG,"lv add");
                     title1.add(value.title);
                     style1.add(value.style);
-                    author1.add(username);
+                    author1.add(value.author_uid);
                     storyintro1.add(value.storyintro);
                 }
                 for (int i = 0; i < title1.size(); i++) {
@@ -200,11 +200,13 @@ String type="";
                 Intent intent = new Intent();
                 Bundle bundle = new Bundle();
 if(type.equals("edit")){
-    intent.setClass(ShowStoryListActivity.this, ChoiceChapterActivity.class);
     bundle.putString("type", "edit");
+    intent.setClass(ShowStoryListActivity.this, ChoiceChapterActivity.class);
+
 }else if(type.equals("play")){
-    intent.setClass(ShowStoryListActivity.this, PlayVer2Activity.class);
     bundle.putString("type", "play");
+    intent.setClass(ShowStoryListActivity.this, PlayVer2Activity.class);
+
 }
 
 
