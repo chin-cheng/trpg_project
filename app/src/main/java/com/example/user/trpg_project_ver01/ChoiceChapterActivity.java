@@ -27,7 +27,7 @@ public class ChoiceChapterActivity extends AppCompatActivity {
         Log.w(TAG,"key:"+key);
         type=bundle.getString("type");
         Log.w(TAG,"type:"+type);
-        Toast.makeText(ChoiceChapterActivity.this, key, Toast.LENGTH_LONG).show();
+        //Toast.makeText(ChoiceChapterActivity.this, key, Toast.LENGTH_LONG).show();
 
 
 

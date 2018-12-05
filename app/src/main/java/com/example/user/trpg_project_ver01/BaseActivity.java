@@ -72,7 +72,7 @@ public class BaseActivity extends AppCompatActivity {
             new AlertDialog.Builder(this).setTitle("對話視窗")//設定視窗標題
                     .setIcon(R.mipmap.ic_launcher)//設定對話視窗圖示
                     .setMessage(R.string.about)//設定顯示的文字
-                    .setPositiveButton("yes",new DialogInterface.OnClickListener(){
+                    .setPositiveButton("了解",new DialogInterface.OnClickListener(){
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             }}).show();

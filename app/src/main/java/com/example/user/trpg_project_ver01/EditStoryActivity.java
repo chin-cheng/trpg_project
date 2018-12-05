@@ -34,7 +34,7 @@ public class EditStoryActivity extends AppCompatActivity {
     private DatabaseReference writeplot;
     EditText plottext_edit, choice1text_edit, choice2text_edit;
     EditText ch1_chap, ch1_bran, ch2_chap, ch2_bran;
-    TextView writeposition;
+    TextView writeposition,choice1text,choice2text;
     private static final String TAG = "EditStoryActivity";
 
     @Override
@@ -52,7 +52,8 @@ public class EditStoryActivity extends AppCompatActivity {
         choice1text_edit = findViewById(R.id.choice1text_edit);
         choice2text_edit = findViewById(R.id.choice2text_edit);
         writeposition = findViewById(R.id.writeposition);
-
+        choice1text=findViewById(R.id.choice1text);
+        choice2text=findViewById(R.id.choice2text);
 
         //取Bundle
         Intent intent = this.getIntent();
@@ -62,6 +63,13 @@ public class EditStoryActivity extends AppCompatActivity {
         writeplot = FirebaseDatabase.getInstance().getReference();
         chapter = bundle.getInt("chapter");
         branch = bundle.getInt("branch");
+
+        if(chapter==2){
+            choice1text_edit.setVisibility(View.INVISIBLE);
+            choice2text_edit.setVisibility(View.INVISIBLE);
+            choice1text.setVisibility(View.INVISIBLE);
+            choice2text.setVisibility(View.INVISIBLE);
+        }
 
         arroption1ch = bundle.getInt("arroption1ch");
         arroption1br = bundle.getInt("arroption1br");

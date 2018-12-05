@@ -31,7 +31,7 @@ public class AddBranchActivity extends AppCompatActivity {
     private DatabaseReference writeplot;
     EditText plottext_edit,choice1text_edit,choice2text_edit;
     EditText ch1_chap,ch1_bran,ch2_chap,ch2_bran;
-    TextView writeposition;
+    TextView writeposition,choice1text,choice2text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +41,8 @@ public class AddBranchActivity extends AppCompatActivity {
         choice1text_edit=findViewById(R.id.choice1text_edit);
         choice2text_edit=findViewById(R.id.choice2text_edit);
         writeposition=findViewById(R.id.writeposition);
-
+        choice1text=findViewById(R.id.choice1text);
+        choice2text=findViewById(R.id.choice2text);
 
 
         //取Bundle
@@ -60,7 +61,12 @@ public class AddBranchActivity extends AppCompatActivity {
 //final String position=;
         Log.w("test","key:"+key+"ch"+chapter+"br"+branch);
         writeposition.setText(chapter+"-"+branch);
-
+if(chapter==2){
+    choice1text_edit.setVisibility(View.INVISIBLE);
+    choice2text_edit.setVisibility(View.INVISIBLE);
+    choice1text.setVisibility(View.INVISIBLE);
+    choice2text.setVisibility(View.INVISIBLE);
+}
         //Toast.makeText(AddBranchActivity.this, chapter+"-"+branch, Toast.LENGTH_LONG).show();
 
         findViewById(R.id.fabNewPost).setOnClickListener(new View.OnClickListener() {
@@ -107,7 +113,7 @@ public class AddBranchActivity extends AppCompatActivity {
                 writeplot.child("story").child(key).child("content").child("chapter").child(String.valueOf(chapter)).child("branch").child(String.valueOf(branch)).child("option").child("2").child("option_position").setValue(2);
 
 
-                Toast.makeText(AddBranchActivity.this, "ok", Toast.LENGTH_LONG).show();
+                Toast.makeText(AddBranchActivity.this, "新增成功", Toast.LENGTH_LONG).show();
                 finish();
             }
         });

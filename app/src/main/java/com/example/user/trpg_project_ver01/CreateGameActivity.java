@@ -86,7 +86,7 @@ public class CreateGameActivity extends BaseActivity {
         story.child(key).child("title").setValue(create_storyname.getText().toString());
         story.child(key).child("storyintro").setValue(create_storyintro.getText().toString());
 
-        Toast.makeText(CreateGameActivity.this, key, Toast.LENGTH_LONG).show();
+       // Toast.makeText(CreateGameActivity.this, key, Toast.LENGTH_LONG).show();
 
 
         Intent intent = new Intent();

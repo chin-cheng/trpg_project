@@ -103,7 +103,7 @@ public class RegisterActivity extends AppCompatActivity {
                                         task.isComplete() ? "註冊成功" : "註冊失敗";
                                 new AlertDialog.Builder(RegisterActivity.this)
                                         .setMessage(message)
-                                        .setPositiveButton("OK",  new DialogInterface.OnClickListener() {public void onClick(DialogInterface dialog, int id) {Intent intent=new Intent();intent.setClass(RegisterActivity.this, MemberActivity.class);
+                                        .setPositiveButton("OK",  new DialogInterface.OnClickListener() {public void onClick(DialogInterface dialog, int id) {Intent intent=new Intent();intent.setClass(RegisterActivity.this, ProfileActivity.class);
                                                 startActivity(intent);
 
                                             FirebaseDatabase db = FirebaseDatabase.getInstance();
